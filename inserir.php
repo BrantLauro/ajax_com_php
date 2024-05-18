@@ -5,9 +5,9 @@
     $name = $_POST['name'];
     $comment = $_POST['comment'];
 
-    $pdo = new PDO('mysql:host=localhost; dbname=bd_comment;', 'root', '');
+    $pdo = new PDO('mysql:host=localhost; dbname=db_comment;', 'root', '');
 
-    $stmt = $pdo->prepare('INSERT INTO comments (name, comment) VALUES (:na, :co)');
+    $stmt = $pdo->prepare('INSERT INTO comments (name, comment) VALUES (:na, :co);');
     $stmt->bindValue(':na', $name);
     $stmt->bindValue(':co', $comment);
     $stmt->execute();
