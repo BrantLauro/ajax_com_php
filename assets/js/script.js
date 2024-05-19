@@ -39,6 +39,7 @@ function getComments() {
             } else if ((comment['like_val'] != null) && (comment['like_val'] == 0)) {
                 $('#img-dislike-'+ comment['id']).attr('src', 'assets/img/dislike-press.png');
             }
+            getReplys(comment['id']);
         }
     });
 }
@@ -94,7 +95,28 @@ $('#formReply').submit(function(req) {
         data: {name: u_name, comment: u_comment, comment_id: u_comment_id},
         dataType: 'json'
     }).done(function(result){
-        $('.form-reply').empty();
+        $('.box_comment').empty();
         getComments();
     });
 });
+
+function getReplys(id) {
+    $.ajax({
+        url: 'http://localhost/ajax_com_php/selecionar-replys.php',
+        method: 'GET',
+        data: {comment_id: id},
+        dataType: 'json'
+    }).done(function(result){
+        if(result != 'Nenhum resultado encontrado!') {
+            var div = '<h4> Respostas: </h4>';
+            $('.b_comm[data-id="' + id + '"]').append(div);
+        }
+        for(const reply of result) {
+            var html = '<div class="b_rep">';
+            html += '<h4>'+ reply['name'] +'</h4>';
+            html += '<p>'+ reply['comment'] +'</p>';
+            html += '</div>';
+            $('.b_comm[data-id="' + reply['comment_id'] + '"]').append(html);
+        }
+    });
+}

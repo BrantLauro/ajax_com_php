@@ -45,6 +45,14 @@ div.box_form{
 	width: 100%;
 }
 
+.formReplyDiv {
+	text-align: center;
+}
+
+#formReply {
+	width: 100%;
+}
+
 .input {
 	display: inline-block;
 	text-align: left;
@@ -54,7 +62,7 @@ div.box_form{
 	display: inline-block;
 }
 
-div.box_form > form > div.input > input, div.box_form > form > div.input > textarea {
+div.box_form > form > div.input > input, div.box_form > form > div.input > textarea, #formReply > div.input > input, #formReply > div.input > textarea {
 	border: 1px solid #c2c9d64d;
 	background-color: #141314;
 	margin-top: 4px;
@@ -72,8 +80,7 @@ div.box_form > form > div.input > textarea {
 	height: 100px;
 }
 
-div.box_form > form > div.input-bt > input.btn-sub {
-	width: 700px;
+div.box_form > form > div.input-bt > input.btn-sub, #formReply > div.input-bt > input.btn-sub {
 	padding: 10px 15px;
 	background-color: #238636;
 	color:#e6e1e3;
@@ -82,12 +89,12 @@ div.box_form > form > div.input-bt > input.btn-sub {
 	border-radius: 10px;
 }
 
-div.box_form > form > div.input-bt > input.btn-sub:hover{
-	background-color: #3b8d4c;
+div.box_form > form > div.input-bt > input.btn-sub {
+	width: 700px;
 }
 
-div.box_form > form > div.input-bt > input.btn-sub:disabled{
-	background-color: #238636;
+div.box_form > form > div.input-bt > input.btn-sub:hover, #formReply > div.input-bt > input.btn-sub:hover{
+	background-color: #3b8d4c;
 }
 
 .b_comm {
@@ -97,17 +104,18 @@ div.box_form > form > div.input-bt > input.btn-sub:disabled{
 	padding: 30px;	
 }
 
-.b_comm form {
-	margin: 0;
-	padding: 0;
-	display: inline-block;
+.b_rep {
+	color: #A7A6A6;
+	margin: 5px 0px;
+	border-radius: 15px;
+	padding: 10px 20px;	
 }
 
-.b_comm:nth-child(even){
+.b_comm:nth-child(even), .b_rep:nth-child(even){
 	background-color: #141314;
 }
 
-.b_comm:nth-child(odd){
+.b_comm:nth-child(odd), .b_rep:nth-child(odd){
 	background-color: #1C1D1B;
 }
 
@@ -124,6 +132,12 @@ div.box_form > form > div.input-bt > input.btn-sub:disabled{
 .btn img {
 	width: 25px;
 	height: 25px;
+}
+
+#formReply input, #formReply textarea{
+	width: 400px;
+	border-radius: 10px;
+	padding: 10px 15px;
 }
 
 footer {
