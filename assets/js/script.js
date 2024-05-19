@@ -1,3 +1,4 @@
+
 $('#form1').submit(function(req) {
     req.preventDefault();
 
@@ -16,7 +17,6 @@ $('#form1').submit(function(req) {
         getComments();
     });
 });
-
 
 function getComments() {
     $.ajax({
@@ -72,6 +72,8 @@ function likeComment(id, value, likeVal) {
     });
 }
 
+formReply = 0;
+
 function replyComment(id) {
     $.ajax({
         url: 'http://localhost/ajax_com_php/reply.php',
@@ -79,7 +81,13 @@ function replyComment(id) {
         data: {comment_id: id},
         dataType: 'html'
     }).done(function(result){
-        $('.b_comm[data-id="' + id + '"]').append(result);
+        if(formReply == 0) {
+            $('.b_comm[data-id="' + id + '"]').append(result);
+            formReply += 1;
+        } else if(formReply == 1){
+            $('.formReplyDiv').empty();
+            formReply -= 1;
+        }
     });
 }
 
